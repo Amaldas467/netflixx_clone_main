@@ -1,48 +1,213 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_dec/global_widgets/username_card.dart';
 import 'package:netflix_dec/utils/color_constants.dart';
+import 'package:netflix_dec/utils/database.dart';
 
 class Morescreen extends StatelessWidget {
-  const Morescreen({super.key});
+  const Morescreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.mainBlack,
-      body: Column(
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5, crossAxisSpacing: 2),
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration:
-                            BoxDecoration(color: ColorConstants.mainWhite),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '',
-                        style: TextStyle(color: ColorConstants.mainWhite),
-                      )
-                    ],
-                  );
-                },
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: 150,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: DbData.userNameImages.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Username(
+                      imageurl:
+                          DbData.userNameImages[index]["image"].toString(),
+                      name: DbData.userNameImages[index]["name"].toString(),
+                    );
+                  },
+                  separatorBuilder: (context, index) => SizedBox(
+                    width: 15,
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.edit,
+                  color: ColorConstants.mainWhite,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'Manage Profiles',
+                  style: TextStyle(color: Colors.white),
+                ),
+                SizedBox(
+                  height: 10,
+                )
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              color: ColorConstants.mainGrey,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.messenger_outline, color: Colors.white),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Tell Friends about Netflix',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: ColorConstants.mainWhite),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      " It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: ColorConstants.mainWhite,
+                      ),
+                      textAlign: TextAlign.justify,
+                      maxLines: 2,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Terms and Conditions',
+                      style: TextStyle(
+                          color: ColorConstants.mainWhite, fontSize: 11),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: 37,
+                          width: 247,
+                          color: ColorConstants.mainBlack,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          height: 35,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              color: ColorConstants.mainWhite,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Center(
+                            child: Text(
+                              'Copy Link',
+                              style: TextStyle(
+                                  color: ColorConstants.mainBlack,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 45,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset("assets/images/whatsapp_logo.png"),
+                          VerticalDivider(),
+                          Image.asset("assets/images/fb_logo.png"),
+                          VerticalDivider(),
+                          Image.asset("assets/images/Gmail-logo.png"),
+                          VerticalDivider(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.more_horiz,
+                                color: ColorConstants.mainWhite,
+                              ),
+                              Text(
+                                'More',
+                                style:
+                                    TextStyle(color: ColorConstants.mainWhite),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Image.asset(
+                'assets/images/tick.png',
+                height: 40,
+              ),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'App Settings',
+                    style: TextStyle(
+                        color: ColorConstants.mainWhite, fontSize: 15),
+                  ),
+                  Text(
+                    'Account',
+                    style: TextStyle(
+                        color: ColorConstants.mainWhite, fontSize: 15),
+                  ),
+                  Text(
+                    'Help',
+                    style: TextStyle(
+                        color: ColorConstants.mainWhite, fontSize: 15),
+                  ),
+                  Text(
+                    'Sign out',
+                    style: TextStyle(
+                        color: ColorConstants.mainWhite, fontSize: 15),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
