@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_dec/utils/color_constants.dart';
+import 'package:netflix_dec/view/comming_soon/commingsoon.dart';
+import 'package:netflix_dec/view/download_screen/download.dart';
 import 'package:netflix_dec/view/home_screen/home_screen.dart';
+import 'package:netflix_dec/view/more_screen/more.dart';
 import 'package:netflix_dec/view/search_screen/search_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -14,6 +17,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   List<Widget> screens = [
     HomeScreen(),
     SearchScreen(),
+    Comingsoon(),
+    Dowmnload(),
+    Morescreen(),
     Center(
       child: Text("comming soon screen"),
     ),
@@ -53,6 +59,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                 label: "Coming soon"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.download_sharp), label: "Downloads"),
+            BottomNavigationBarItem(icon: Icon(Icons.menu), label: "more")
           ],
         ));
   }

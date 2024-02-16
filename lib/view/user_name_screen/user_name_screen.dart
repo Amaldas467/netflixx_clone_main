@@ -3,7 +3,6 @@ import 'package:netflix_dec/utils/color_constants.dart';
 import 'package:netflix_dec/utils/database.dart';
 import 'package:netflix_dec/utils/image_constants.dart';
 import 'package:netflix_dec/view/bottom_nav_screen/bottom_nav_screen.dart';
-import 'package:netflix_dec/view/home_screen/home_screen.dart';
 
 class UserNameScreen extends StatelessWidget {
   const UserNameScreen({super.key});
@@ -45,7 +44,6 @@ class UserNameScreen extends StatelessWidget {
                     DbData.userNameImages.length
                 ? InkWell(
                     onTap: () {
-                      // write code to navigate to home screen
                       Navigator.push(
                           context,
                           MaterialPageRoute(
