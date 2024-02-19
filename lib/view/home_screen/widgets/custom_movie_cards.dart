@@ -46,7 +46,7 @@ class CustomMovieCards extends StatelessWidget {
                         shape: isCircular == true
                             ? BoxShape.circle
                             : BoxShape.rectangle,
-                        color: Colors.red,
+                        color: ColorConstants.mainBlack,
                         image: DecorationImage(
                             image: NetworkImage(imagesList[index]),
                             fit: BoxFit.cover)),
@@ -67,7 +67,7 @@ class CustomMovieCards extends StatelessWidget {
                             child: Container(
                               width: 40,
                               height: 5,
-                              color: ColorConstants.mainRed,
+                              color: ColorConstants.mainBlack,
                             ),
                           ),
                           Container(
